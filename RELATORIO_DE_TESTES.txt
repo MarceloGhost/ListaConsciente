@@ -1,0 +1,86 @@
+================================================================================
+                    RELATÓRIO DE TESTES - LISTA CONSCIENTE
+================================================================================
+Projeto: Lista Consciente (Web App Minimalista de Compras Racionais)
+Stack: Next.js 14 (App Router), React 18, TypeScript, Tailwind CSS, Zustand
+Data de Execução: 29/10/2026 - 20:17
+Ambiente de Execução: Node.js v22.17.0 | Windows OS
+Status Geral: APROVADO COM 100% DE SUCESSO (28/28 Testes Automatizados)
+
+--------------------------------------------------------------------------------
+1. SUMÁRIO EXECUTIVO
+--------------------------------------------------------------------------------
+Total de Testes Unitários e de Estado: 28
+Testes Aprovados: 28 (100%)
+Testes Falhos: 0 (0%)
+Compilação Next.js (next build): SUCESSO (0 erros, 9 rotas estáticas geradas)
+
+--------------------------------------------------------------------------------
+2. BATERIA 1: TESTES DO MOTOR DE ANÁLISE E PARSING (scripts/test-analyzer.mjs)
+--------------------------------------------------------------------------------
+[PASS] Teste 1.1: Identificação exata dos 5 itens fornecidos na lista padrão
+[PASS] Teste 1.2: Presença do item "Flor" na lista analisada
+[PASS] Teste 1.3: Categorização de "Flor" como item de reflexão ("reflection")
+[PASS] Teste 1.4: Inicialização de "Flor" com status pendente ("pending")
+[PASS] Teste 1.5: Ausência de preços mockados pelo sistema (preço inicial = R$ 0,00)
+[PASS] Teste 1.6: Flag hasUserDefinedPrice = false até o usuário definir o preço
+[PASS] Teste 1.7: Reconhecimento de "Brinquedos" como item de reflexão
+[PASS] Teste 1.8: Reconhecimento de "Garrafa" como item de reflexão
+[PASS] Teste 1.9: Reconhecimento de "Resistência de chuveiro" como item essencial
+[PASS] Teste 1.10: Extração de preço quando informado pelo usuário ("Arroz R$ 30")
+[PASS] Teste 1.11: Extração de preço quando informado pelo usuário ("Carne 45.00")
+[PASS] Teste 1.12: Extração de preço quando informado pelo usuário ("Flor 35")
+
+Subtotal Analisador: 12/12 Aprovados
+
+--------------------------------------------------------------------------------
+3. BATERIA 2: TESTES DE FLUXO DE ESTADO E CHATBOT (scripts/test-store.ts)
+--------------------------------------------------------------------------------
+[PASS] Teste 2.1: App inicia com estado 100% vazio (items = [])
+[PASS] Teste 2.2: Campo de entrada textual inicia vazio (rawInput = "")
+[PASS] Teste 2.3: Flag isAnalyzed inicia como false
+[PASS] Teste 2.4: Submissão de lista analisa e popula 5 itens no store
+[PASS] Teste 2.5: Flag isAnalyzed é alterada para true após envio
+[PASS] Teste 2.6: Item "Flor" não possui preço inventado pelo assistente
+[PASS] Teste 2.7: Flag hasUserDefinedPrice permanece false antes da ação do usuário
+[PASS] Teste 2.8: Chatbot registra valor aproximado estimado pelo usuário (R$ 35,00)
+[PASS] Teste 2.9: Flag hasUserDefinedPrice torna-se true após o usuário informar o valor
+[PASS] Teste 2.10: Flag isPriceEstimatedByUser registra transparência de estimativa
+[PASS] Teste 2.11: Pergunta 1 do Checklist Mental (ansiedade/fome) registra marcação
+[PASS] Teste 2.12: Pergunta 3 do Checklist Mental (pagamento em dinheiro vivo) registra marcação
+[PASS] Teste 2.13: Ação "Adiar Compra" altera status para "postponed" e preserva valor
+[PASS] Teste 2.14: Ação "Manter na Lista" altera status para "kept" e prepara alerta
+[PASS] Teste 2.15: Reset total limpa lista de compras retornando ao estado inicial
+[PASS] Teste 2.16: Reset total limpa rawInput e reseta flags de análise
+
+Subtotal Fluxo de Estado: 16/16 Aprovados
+
+--------------------------------------------------------------------------------
+4. VALIDAÇÃO DE COMPILAÇÃO E ROTAS (next build)
+--------------------------------------------------------------------------------
+- Compilação TypeScript: Válida (sem erros de tipos)
+- Validação ESLint: Válida
+- Rotas Estáticas Geradas:
+  ○ /              (Redirecionamento automático)
+  ○ /chat          (Tela 1: Assistente, Precificação e Checklist Mental)
+  ○ /lista         (Tela 2: Checklist no Mercado com Edição de Preços)
+  ○ /reflexao      (Tela 3: Dicas Dinâmicas e Autogestão Comportamental)
+  ○ /metricas      (Tela 4: Diagnóstico, Alerta de Impulso e Extrato)
+  ○ /impacto       (Alias com redirecionamento para métricas)
+  ○ /_not-found    (Página 404 customizada)
+
+--------------------------------------------------------------------------------
+5. COMANDO PARA REPRODUÇÃO DOS TESTES
+--------------------------------------------------------------------------------
+Para reexecutar a qualquer momento a suíte de testes completa, execute:
+
+  npm test
+
+Para compilar e validar o build de produção:
+
+  npm run build
+
+================================================================================
+FIM DO RELATÓRIO
+================================================================================
+
